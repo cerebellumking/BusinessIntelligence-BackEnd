@@ -1,0 +1,118 @@
+[2023-05-24 10:26:48] select headline from t_news where headline like '%a%' limit 5; 0.008760690689086914s
+[2023-05-24 10:37:38] select headline from t_news where FIND_IN_SET(headline,'a') limit 5; 0.7049291133880615s
+[2023-05-24 10:37:56] select headline from t_news where headline like '%a%' limit 5; 0.0021948814392089844s
+[2023-05-24 10:41:12] select news_id,headline from t_news where headline like '%a%' limit 5; 0.002875089645385742s
+[2023-05-24 10:41:40] select news_id,headline from t_news where headline like '%a%' limit 5; 0.002031087875366211s
+[2023-05-24 10:44:05] select count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d") 
+        from t_news_browse_record tnbr 
+        where 1560528000 <= tnbr.start_ts and tnbr.start_ts <= 1561478400 and news_id = 97179 
+        group by tnbr.news_id ,from_unixtime(tnbr.start_ts,"%Y-%m-%d"); 0.02270197868347168s
+[2023-05-24 10:47:04] select sum(tndc.browse_count), sum(tndc.browse_duration), tndc.day_stamp from t_news_daily_category tndc where tndc.category = 'finance' group by tndc.day_stamp; 0.006724834442138672s
+[2023-05-24 10:53:21] select sum(tndc.browse_count), sum(tndc.browse_duration), tndc.day_stamp from t_news_daily_category tndc where tndc.day_stamp>=18061 and tndc.day_stamp<=18072 and tndc.category = 'finance' group by tndc.day_stamp; 0.002145051956176758s
+[2023-05-24 10:55:18] select sum(tndc.browse_count), sum(tndc.browse_duration), tndc.day_stamp from t_news_daily_category tndc where tndc.day_stamp>=18061 and tndc.day_stamp<=18072 and tndc.category = 'finance' group by tndc.day_stamp; 0.0030851364135742188s
+[2023-05-24 10:57:26] select news_id,headline from t_news where headline like '%a%' limit 5; 0.0013341903686523438s
+[2023-05-24 10:57:39] select news_id,headline from t_news where headline like '%a%' limit 5; 0.0010712146759033203s
+[2023-05-24 10:57:41] select news_id,headline from t_news where headline like '%a%' limit 5; 0.0013501644134521484s
+[2023-05-24 10:59:10] select news_id,headline from t_news where headline like '%a%' limit 5; 0.0012068748474121094s
+[2023-05-24 10:59:14] select count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d") 
+        from t_news_browse_record tnbr 
+        where 1560528000 <= tnbr.start_ts and tnbr.start_ts <= 1561478400 and news_id = 97179 
+        group by tnbr.news_id ,from_unixtime(tnbr.start_ts,"%Y-%m-%d"); 0.03465867042541504s
+[2023-05-24 11:00:50] select news_id,headline from t_news where headline like '%a%' limit 5; 0.0017931461334228516s
+[2023-05-24 11:01:18] select news_id,headline from t_news where headline like '%a%' limit 5; 0.005240917205810547s
+[2023-05-24 11:04:02] select news_id,headline from t_news where headline like '%a%' limit 5; 0.002652883529663086s
+[2023-05-24 11:04:44] select news_id,headline from t_news where headline like '%a%' limit 5; 0.002307891845703125s
+[2023-05-24 11:07:50] select news_id,headline from t_news where headline like '%a%' limit 5; 0.002028942108154297s
+[2023-05-24 11:11:31] select count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d") 
+        from t_news_browse_record tnbr 
+        where 1560528000 <= tnbr.start_ts and tnbr.start_ts <= 1561478400 and news_id = 97179 
+        group by tnbr.news_id ,from_unixtime(tnbr.start_ts,"%Y-%m-%d"); 0.03872990608215332s
+[2023-05-24 11:12:29] select sum(tndc.browse_count), sum(tndc.browse_duration), tndc.day_stamp from t_news_daily_category tndc where tndc.day_stamp>=18061 and tndc.day_stamp<=18072 and tndc.category = 'finance' group by tndc.day_stamp; 0.0035669803619384766s
+[2023-05-24 11:13:04] 
+        select count(1),n.category
+        from t_news as n
+        where news_id in 
+            (select tnbr.news_id from t_news_browse_record as tnbr 
+            where tnbr.user_id = 12030 and 1560416400 <= tnbr.start_ts 
+            and tnbr.start_ts <= 1562834655)
+        group by n.category; 0.028037071228027344s
+[2023-05-24 11:13:24] select new.headline,new.news_id
+            from t_news_browse_record as tnbr join t_news as new on tnbr.news_id = new.news_id
+            where tnbr.start_ts>=1560416400 and tnbr.start_ts<=1561247999  and user_id=1000 
+            and tnbr.news_id in (select news_id from t_news n where length(n.headline)<=200 and length(n.content)>=10); 0.014219045639038086s
+[2023-05-24 11:13:51] select news_id,headline from t_news where headline like '%a%' limit 5; 0.002997159957885742s
+[2023-05-24 11:22:42] select count(*), from_unixtime(tnbr.start_ts,"%Y-%m-%d") 
+        from t_news_browse_record tnbr 
+        where 1560528000 <= tnbr.start_ts and tnbr.start_ts <= 1561478400 and news_id = 97179 
+        group by tnbr.news_id ,from_unixtime(tnbr.start_ts,"%Y-%m-%d"); 0.020603179931640625s
+[2023-05-24 11:23:02] select distinct(category) from t_news_daily_category; 0.005075216293334961s
+[2023-05-24 11:28:10] 
+        select count(*),n.category,from_unixtime(t.start_ts,"%Y-%m-%d")
+        from t_news as n join (select tnbr.news_id,tnbr.start_ts from t_news_browse_record as tnbr where tnbr.user_id=12030 and tnbr.start_ts>=1560416400 and tnbr.start_ts<=1562834655) as t
+        on n.news_id=t.news_id
+        group by n.category,from_unixtime(t.start_ts,"%Y-%m-%d"); 0.007237911224365234s
+[2023-05-24 11:29:15] 
+        select count(*),n.category,from_unixtime(t.start_ts,"%Y-%m-%d")
+        from t_news as n join (select tnbr.news_id,tnbr.start_ts from t_news_browse_record as tnbr where tnbr.user_id=12030 and tnbr.start_ts>=1560416400 and tnbr.start_ts<=1562834655) as t
+        on n.news_id=t.news_id
+        group by n.category,from_unixtime(t.start_ts,"%Y-%m-%d"); 0.009643077850341797s
+[2023-05-24 11:31:48] 
+        select count(*),n.category,from_unixtime(t.start_ts,"%Y-%m-%d") from t_news as n join (select tnbr.news_id,tnbr.start_ts from t_news_browse_record as tnbr where tnbr.user_id=12030 and tnbr.start_ts>=1560416400 and tnbr.start_ts<=1562834655) as t on n.news_id=t.news_id group by n.category,from_unixtime(t.start_ts,"%Y-%m-%d"); 0.0075490474700927734s
+[2023-05-24 11:41:36] SELECT new.headline, new.news_id
+            FROM t_news_browse_record AS tnbr JOIN t_news AS new ON tnbr.news_id = new.news_id
+            WHERE tnbr.start_ts >= 1560416400 AND tnbr.start_ts <= 1561247999  
+            AND user_id >= 1000 AND user_id <= 1020
+            AND tnbr.news_id IN (
+                SELECT news_id FROM t_news n 
+                WHERE LENGTH(n.headline) <= 200 AND LENGTH(n.headline) >= 50
+                AND LENGTH(n.content) >= 10 AND LENGTH(n.content) <= 1000
+                AND n.topic LIKE '%advice%'
+            ); 0.06846404075622559s
+[2023-05-24 11:41:51] SELECT new.headline, new.news_id
+            FROM t_news_browse_record AS tnbr JOIN t_news AS new ON tnbr.news_id = new.news_id
+            WHERE tnbr.start_ts >= 1560416400 AND tnbr.start_ts <= 1561247999  
+            AND user_id >= 1000 AND user_id <= 1020
+            AND tnbr.news_id IN (
+                SELECT news_id FROM t_news n 
+                WHERE LENGTH(n.headline) <= 200 AND LENGTH(n.headline) >= 50
+                AND LENGTH(n.content) >= 10 AND LENGTH(n.content) <= 5000
+                AND n.topic LIKE '%advice%'
+            ); 0.022307872772216797s
+[2023-05-24 11:41:52] SELECT new.headline, new.news_id
+            FROM t_news_browse_record AS tnbr JOIN t_news AS new ON tnbr.news_id = new.news_id
+            WHERE tnbr.start_ts >= 1560416400 AND tnbr.start_ts <= 1561247999  
+            AND user_id >= 1000 AND user_id <= 1020
+            AND tnbr.news_id IN (
+                SELECT news_id FROM t_news n 
+                WHERE LENGTH(n.headline) <= 200 AND LENGTH(n.headline) >= 50
+                AND LENGTH(n.content) >= 10 AND LENGTH(n.content) <= 5000
+                AND n.topic LIKE '%advice%'
+            ); 0.014372110366821289s
+[2023-05-24 11:42:04] SELECT new.headline, new.news_id
+            FROM t_news_browse_record AS tnbr JOIN t_news AS new ON tnbr.news_id = new.news_id
+            WHERE tnbr.start_ts >= 1560416400 AND tnbr.start_ts <= 1561247999  
+            AND user_id >= 1000 AND user_id <= 1020
+            AND tnbr.news_id IN (
+                SELECT news_id FROM t_news n 
+                WHERE LENGTH(n.headline) <= 200 AND LENGTH(n.headline) >= 50
+                AND LENGTH(n.content) >= 10 AND LENGTH(n.content) <= 5000
+                AND n.topic LIKE '%%'
+            ); 0.025358200073242188s
+[2023-05-24 11:42:12] SELECT new.headline, new.news_id
+            FROM t_news_browse_record AS tnbr JOIN t_news AS new ON tnbr.news_id = new.news_id
+            WHERE tnbr.start_ts >= 1560416400 AND tnbr.start_ts <= 1561247999  
+            AND user_id >= 1000 AND user_id <= 1020
+            AND tnbr.news_id IN (
+                SELECT news_id FROM t_news n 
+                WHERE LENGTH(n.headline) <= 200 AND LENGTH(n.headline) >= 50
+                AND LENGTH(n.content) >= 10 AND LENGTH(n.content) <= 5000
+                AND n.topic LIKE '%soccer%'
+            ); 0.011442184448242188s
+[2023-05-24 11:43:59] select new.headline, new.news_id from t_news_browse_record as tnbr join t_news as new on tnbr.news_id = new.news_id where tnbr.start_ts >= 1560416400 AND tnbr.start_ts <= 1561247999  and user_id >= 1000 and user_id <= 1020 and tnbr.news_id in (
+                select news_id from t_news n 
+                where LENGTH(n.headline) <= 200 and length(n.headline) >= 50
+                and length(n.content) >= 10 and length(n.content) <= 5000
+                and n.topic like '%soccer%'
+            ); 0.023082971572875977s
+[2023-05-24 11:44:27] select new.headline, new.news_id from t_news_browse_record as tnbr join t_news as new on tnbr.news_id = new.news_id where tnbr.start_ts >= 1560416400 AND tnbr.start_ts <= 1561247999  and user_id >= 1000 and user_id <= 1020 and tnbr.news_id in (select news_id from t_news n where LENGTH(n.headline) <= 200 and length(n.headline) >= 50 and length(n.content) >= 10 and length(n.content) <= 5000 and n.topic like '%soccer%'); 0.009696006774902344s
+[2023-05-24 11:44:52] select new.headline, new.news_id from t_news_browse_record as tnbr join t_news as new on tnbr.news_id = new.news_id where tnbr.start_ts >= 1560416400 AND tnbr.start_ts <= 1561247999  and user_id >= 1000 and user_id <= 1020 and tnbr.news_id in (select news_id from t_news n where LENGTH(n.headline) <= 200 and length(n.headline) >= 50 and length(n.content) >= 10 and length(n.content) <= 5000 and n.topic like '%soccer%'); 0.025220155715942383s

@@ -11,7 +11,7 @@ HOSTNAME = "100.81.9.75"
 PORT = 3306
 USERNAME = "hive"
 PASSWORD = "shizb1207"
-DATABASE = "bi"
+DATABASE = "bi_test"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}"
 
@@ -21,7 +21,7 @@ db = SQLAlchemy(app)
 if __name__ == '__main__':
     start_day = 18060
     with app.app_context(), db.engine.connect() as conn:
-        for start_day in tqdm.tqdm(range(18060, 18088)):
+        for start_day in tqdm.tqdm(range(18060, 18074)):
             sql = f"""insert into t_news_daily_category
                     (select tnbr.start_day,n.category,count(tnbr.news_id),sum(tnbr.duration)
                     from (t_news_browse_record tnbr join (select news_id,category from t_news) as n on tnbr.news_id = n.news_id)
