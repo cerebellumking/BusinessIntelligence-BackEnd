@@ -8,11 +8,11 @@ import time
 app = Flask(__name__)
 CORS(app)
 HOSTNAME = "100.81.9.75"
-HOSTNAME = "192.168.0.106"
+# HOSTNAME = "192.168.0.106"
 PORT = 3306
 USERNAME = "hive"
 PASSWORD = "shizb1207"
-DATABASE = "bi"
+DATABASE = "bi_test"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}"
 
